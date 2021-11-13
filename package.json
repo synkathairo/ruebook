@@ -96,7 +96,8 @@
 		"url": "https://opencollective.com/bootstrap"
 	},
 	"dependencies": {
-		"@google-cloud/language": "^4.3.2"
+		"@google-cloud/language": "^4.3.2",
+		"express": "^4.17.1"
 	},
 	"peerDependencies": {
 		"@popperjs/core": "^2.9.2"
