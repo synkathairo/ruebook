@@ -1,6 +1,6 @@
 # Ruebook
 
-A project for BostonHacks 2021! 
+A project for [BostonHacks](https://bostonhacks.io/) [2021](https://bostonhacks-2021.devpost.com/)! 
 
 > "For you there's rosemary and rue; 
 > these keep seeming and savour all the winter long." 
