@@ -13,11 +13,9 @@ We utilized Google's Cloud Natural Language API for this project.
 
 ## Setup configuration
 
-After running `git clone https://github.com/synkathairo/ruebook`, use `npm install` to install the requisite npm packages. Create a file called `config.js` in your cloned directory, and create a file in the following format:
+After running `git clone https://github.com/synkathairo/ruebook`, use `npm install` to install the requisite npm packages. Create a file called `.env` in your cloned directory, and create a file in the following format:
 
 ```js
-var config {
-	API_KEY = 'API key here'
-}
+API_KEY=apiKeyTextHere
 ```
 Place your API key as needed above, derived from Google Cloud.
