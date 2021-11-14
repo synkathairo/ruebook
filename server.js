@@ -1,11 +1,11 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
-// const { response } = require('express');
 var app = express();
 // var config = require('./config')
-// require('dotenv').config();
-var API_KEY = process.env.API_KEY; //config.API_TOKEN;
+require('dotenv').config();
+const API_KEY = process.env.API_KEY; //config.API_TOKEN;
+// const token = process.env.API_KEY;
 // const { response } = require('express');
 // var { response } = require('express');
 
@@ -55,6 +55,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 		method: 'POST',
 		json: inputJson
 	};
+	// console.log(options);
 	request(options, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			console.log(response['body']);
@@ -92,6 +93,13 @@ var server = app.listen(8081, function () {
 })
 
 function sentimentJson(text) {
+	// console.log({
+	// 	'document' : {
+	// 		'type': 'PLAIN_TEXT',
+	// 		'content': text
+	// 	},
+	// 	'encodingType': 'UTF8'
+	// });
 	return {
 		'document' : {
 			'type': 'PLAIN_TEXT',
