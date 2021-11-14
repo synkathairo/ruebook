@@ -34,8 +34,10 @@
 		<p class="h3">It's time to <i small="text-muted">capture the moment</i></p>
 		<p>How do you feel today?</p>
 		<div class="form-group">
-		<form action = "http://127.0.0.1:8081/journal.html" method = "POST">
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+		<form action = "./process_post" method = "POST" >
+			<!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+			<textarea class="form-control" rows="3" name="journalEntry"></textarea>
+			<!-- <input type="text" name="journalEntry"> -->
 			<input type = "submit" value = "Submit">
 		</form>
 		</div>
