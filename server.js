@@ -39,7 +39,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 	// response = req.query.journalEntry;
 	// console.log(response);
 	// console.log(JSON.stringify(response));
-	res.end(JSON.stringify(response));
+	// res.end(JSON.stringify(response));
 	// const parseResponse = JSON.parse(response);
 	// theTextWeWant = response. //myObj.journalEntry;
 	theTextWeWant = Object.values(response)[0];
@@ -64,9 +64,37 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 			console.log(responseDATA);
 		}
 	});
+	var score = responseDATA['documentSentiment']['score'];
+	if(score<-0.67) {
+		console.log("sad score");
+		res.sendFile(__dirname + "/" + "sad.html");
+	} else if(-0.67<=score<0.33) {
+		console.log("neutral score");
+		res.sendFile(__dirname + "/" + "neutral.html");
+	} else {
+		console.log("happy score");
+		res.sendFile(__dirname + "/" + "happy.html");
+	}
+	// scoreRedirectPage(score);
+	// console.log(typeof responseDATA);
+	// var score = Object.values(Object.values(responseDATA)[0])[1];
+	// console.log(score);
 	// res.send(JSON.stringify(responseDATA));
 	// res.end();
 })
+
+// function scoreRedirectPage(score) {
+// 	if(score<-0.67) {
+// 		console.log("sad score");
+// 		res.sendFile(__dirname + "/" + "sad.html");
+// 	} else if(-0.67<=score<0.33) {
+// 		console.log("neutral score");
+// 		res.sendFile(__dirname + "/" + "neutral.html");
+// 	} else {
+// 		console.log("happy score");
+// 		res.sendFile(__dirname + "/" + "happy.html");
+// 	}
+// }
 
 // app.post('/process_post', urlencodedParser, function (req, res) {
 //    // Prepare output in JSON format
@@ -78,7 +106,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 //    res.end(JSON.stringify(response));
 // })
 
-var server = app.listen(8081, function () {
+var server = app.listen(8081, function () { // 80
 	var host = server.address().address
 	var port = server.address().port
 	
