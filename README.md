@@ -18,4 +18,8 @@ After running `git clone https://github.com/synkathairo/ruebook`, use `npm insta
 ```js
 API_KEY=apiKeyTextHere
 ```
-Place your API key as needed above, derived from Google Cloud.
+Place your API key as needed above, derived from Google Cloud. Follow [these steps](https://cloud.google.com/natural-language/docs/quickstart) to activate the Cloud Natural Language API from Google Cloud. Then follow [these steps](https://cloud.google.com/docs/authentication/api-keys) to obtain an API key.
+
+## To run
+
+Use `npm server` within the directory to run as configured at `http://localhost:8081` or `http://127.0.0.1:8081`.
