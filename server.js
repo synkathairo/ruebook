@@ -46,7 +46,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 	console.log(theTextWeWant);
 	// console.log(typeof theTextWeWant);
 	// app.get('/journal.html', function (req, res) {
-	// 	res.sendFile( __dirname + "/" + "journal.html" );
+	// res.sendFile( __dirname + "/" + "journal.html" );
 	// 	res.send(response);
 	// })
 	const inputJson = sentimentJson(theTextWeWant);
@@ -55,12 +55,17 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 		method: 'POST',
 		json: inputJson
 	};
+	var responseDATA;
 	// console.log(options);
 	request(options, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			console.log(response['body']);
+			responseDATA = response['body'];
+			// console.log(response['body']);
+			console.log(responseDATA);
 		}
 	});
+	// res.send(JSON.stringify(responseDATA));
+	// res.end();
 })
 
 // app.post('/process_post', urlencodedParser, function (req, res) {
