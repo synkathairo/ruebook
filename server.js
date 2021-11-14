@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 var app = express();
+// var responseDATA;
 // var config = require('./config')
 require('dotenv').config();
 const API_KEY = process.env.API_KEY; //config.API_TOKEN;
@@ -55,26 +56,40 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 		method: 'POST',
 		json: inputJson
 	};
-	var responseDATA;
+	let responseDATA;
 	// console.log(options);
 	request(options, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			responseDATA = response['body'];
 			// console.log(response['body']);
 			console.log(responseDATA);
+			console.log(typeof responseDATA);
+			var score = responseDATA['documentSentiment']['score'];
+			if(score<-0.67) {
+				console.log("sad score");
+				res.sendFile(__dirname + "/" + "sad.html");
+			} else if(-0.67<=score<0.33) {
+				console.log("neutral score");
+				res.sendFile(__dirname + "/" + "neutral.html");
+			} else {
+				console.log("happy score");
+				res.sendFile(__dirname + "/" + "happiness.html");
+			}
 		}
 	});
-	var score = responseDATA['documentSentiment']['score'];
-	if(score<-0.67) {
-		console.log("sad score");
-		res.sendFile(__dirname + "/" + "sad.html");
-	} else if(-0.67<=score<0.33) {
-		console.log("neutral score");
-		res.sendFile(__dirname + "/" + "neutral.html");
-	} else {
-		console.log("happy score");
-		res.sendFile(__dirname + "/" + "happy.html");
-	}
+	// console.log(responseDATA);
+	// console.log(typeof responseDATA);
+	// var score = responseDATA['documentSentiment']['score'];
+	// if(score<-0.67) {
+	// 	console.log("sad score");
+	// 	res.sendFile(__dirname + "/" + "sad.html");
+	// } else if(-0.67<=score<0.33) {
+	// 	console.log("neutral score");
+	// 	res.sendFile(__dirname + "/" + "neutral.html");
+	// } else {
+	// 	console.log("happy score");
+	// 	res.sendFile(__dirname + "/" + "happy.html");
+	// }
 	// scoreRedirectPage(score);
 	// console.log(typeof responseDATA);
 	// var score = Object.values(Object.values(responseDATA)[0])[1];
