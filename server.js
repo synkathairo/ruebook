@@ -29,6 +29,10 @@ app.get('/about.html', function (req, res) {
 	res.sendFile( __dirname + "/" + "about.html" );
 	// res.send('hello world');
 })
+app.get('/archive.html', function (req, res) {
+	res.sendFile( __dirname + "/" + "archive.html" );
+	// res.send('hello world');
+})
 
 app.post('/process_post', urlencodedParser, function (req, res) {
 	// Prepare output in JSON format
